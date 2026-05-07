@@ -1,0 +1,15 @@
+# API Keys / Secrets
+.env
+
+# Python
+__pycache__/
+venv/
+*.pyc
+
+# Node
+node_modules/
+dist/
+
+# System
+.DS_Store
+Thumbs.db

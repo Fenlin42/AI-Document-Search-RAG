@@ -1,0 +1,27 @@
+# backend/requirements.txt
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+python-dotenv==1.0.1
+pydantic-settings==2.7.1
+
+# LangChain
+langchain==0.3.14
+langchain-community==0.3.14
+langchain-groq==0.2.4
+langchain-huggingface==0.1.2
+
+# Embeddings
+sentence-transformers==3.3.1
+
+# Vector DB
+pinecone-client==5.0.1
+langchain-pinecone==0.2.13
+
+# PDF
+PyMuPDF==1.25.3
+
+# Streaming
+sse-starlette==2.2.1
+
+# Upload
+python-multipart==0.0.20
