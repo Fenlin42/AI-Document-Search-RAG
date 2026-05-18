@@ -11,9 +11,8 @@ class Settings(BaseSettings):
     allowed_origins: list[str] = [
         "http://localhost:5173",
         "http://localhost:3000",
+        "https://ai-document-search-rag.vercel.app",
     ]
-    # Vercel-Domain wird ueber ALLOWED_ORIGINS env var ergaenzt:
-    # ALLOWED_ORIGINS='["http://localhost:5173","https://dein-projekt.vercel.app"]'
 
     model_config = {"env_file": ".env", "env_file_encoding": "utf-8"}
 
