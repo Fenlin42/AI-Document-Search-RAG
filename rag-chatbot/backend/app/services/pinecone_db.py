@@ -42,7 +42,10 @@ def get_vector_store() -> PineconeVectorStore:
 def clear_index() -> None:
     """Alle Vektoren im Index loeschen (vor neuem Upload)."""
     index = _get_or_create_index()
-    index.delete(delete_all=True)
+    try:
+        index.delete(delete_all=True)
+    except Exception:
+        pass
 
 
 def store_chunks(chunks: list[Document]) -> int:
