@@ -7,6 +7,7 @@ class Settings(BaseSettings):
     groq_api_key: str
     pinecone_api_key: str
     pinecone_index_name: str = "rag-chatbot"
+    hf_api_key: str = ""
 
     allowed_origins: list[str] = [
         "http://localhost:5173",
