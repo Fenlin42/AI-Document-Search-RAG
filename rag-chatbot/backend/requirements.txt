@@ -9,6 +9,9 @@ langchain==0.3.14
 langchain-community==0.3.14
 langchain-groq==0.2.4
 
+# Embeddings (via HuggingFace Inference API)
+huggingface-hub>=0.20.0
+
 # Vector DB
 pinecone==7.3.0
 langchain-pinecone==0.2.13
@@ -21,6 +24,3 @@ sse-starlette==2.2.1
 
 # Upload
 python-multipart==0.0.20
-
-# HTTP (fuer HuggingFace Inference API)
-requests==2.32.3
