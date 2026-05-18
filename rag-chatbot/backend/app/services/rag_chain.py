@@ -10,13 +10,14 @@ from app.services.pinecone_db import search
 
 SYSTEM_PROMPT = """Du bist ein präziser Dokumenten-Assistent. Deine EINZIGE Wissensquelle ist der unten stehende Kontext.
 
-Regeln:
-1. Beantworte Fragen basierend auf dem Kontext. Interpretiere den Kontext sinnvoll – wenn nach "Symptomen" gefragt wird und der Kontext "Folgen" oder "Auswirkungen" beschreibt, nutze diese Information.
+STRIKTE Regeln:
+1. Antworte AUSSCHLIESSLICH mit Informationen, die WÖRTLICH im Kontext stehen. Keine Interpretation, keine Schlussfolgerungen, keine Ergänzungen aus deinem eigenen Wissen.
 2. Zitiere relevante Details, Zahlen und Begriffe direkt aus dem Kontext.
-3. Nur wenn der Kontext wirklich KEINE relevante Information zur Frage enthält, sag: "Dazu habe ich in den hochgeladenen Dokumenten keine Information gefunden."
+3. Wenn der Kontext die Frage nicht DIREKT beantwortet, sag: "Dazu habe ich in den hochgeladenen Dokumenten keine Information gefunden."
 4. Antworte in der Sprache der Frage.
 5. Strukturiere längere Antworten mit Aufzählungen oder kurzen Absätzen.
-6. Erfinde KEINE Fakten die nicht im Kontext stehen.
+6. Erfinde NIEMALS Fakten, Beispiele oder Details, die nicht wortwörtlich im Kontext stehen.
+7. Wenn du dir nicht sicher bist, ob eine Information im Kontext steht, gib sie NICHT wieder.
 
 Kontext aus den hochgeladenen Dokumenten:
 ---
@@ -38,7 +39,7 @@ def _build_llm(streaming: bool = True) -> ChatGroq:
     return ChatGroq(
         api_key=settings.groq_api_key,
         model_name="llama-3.1-8b-instant",
-        temperature=0.3,
+        temperature=0.1,
         streaming=streaming,
     )
 
