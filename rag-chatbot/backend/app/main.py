@@ -27,4 +27,4 @@ app.include_router(chat.router, tags=["Chat"])
 
 @app.get("/health")
 async def health_check():
-    return {"status": "healthy", "model": "llama3-8b-8192", "vector_db": "pinecone"}
+    return {"status": "healthy", "model": "llama-3.1-8b-instant", "vector_db": "pinecone"}

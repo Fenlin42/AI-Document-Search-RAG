@@ -16,8 +16,8 @@ def extract_chunks(pdf_bytes: bytes, filename: str) -> list[Document]:
         raise ValueError(f"Kein Text in '{filename}' gefunden – ist das PDF leer oder ein Scan?")
 
     splitter = RecursiveCharacterTextSplitter(
-        chunk_size=1000,
-        chunk_overlap=200,
+        chunk_size=500,
+        chunk_overlap=100,
         separators=["\n\n", "\n", ". ", " ", ""],
     )
 

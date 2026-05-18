@@ -1,0 +1,21 @@
+# API Keys / Secrets
+.env
+
+# Claude Code
+.claude/
+
+# Python
+__pycache__/
+venv/
+*.pyc
+
+# Node
+node_modules/
+dist/
+
+# System
+.DS_Store
+Thumbs.db
+
+# Batch scripts (lokal)
+*.bat

@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: rag-chatbot-api
+    runtime: docker
+    dockerfilePath: ./rag-chatbot/backend/Dockerfile
+    dockerContext: ./rag-chatbot/backend
+    plan: free
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: PINECONE_API_KEY
+        sync: false
+      - key: PINECONE_INDEX_NAME
+        value: ragsystem
+      - key: ALLOWED_ORIGINS
+        sync: false

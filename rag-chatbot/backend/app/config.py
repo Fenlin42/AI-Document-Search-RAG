@@ -8,11 +8,12 @@ class Settings(BaseSettings):
     pinecone_api_key: str
     pinecone_index_name: str = "rag-chatbot"
 
-    # CORS – Vercel-Domain hier ergaenzen nach Deployment
     allowed_origins: list[str] = [
         "http://localhost:5173",
         "http://localhost:3000",
     ]
+    # Vercel-Domain wird ueber ALLOWED_ORIGINS env var ergaenzt:
+    # ALLOWED_ORIGINS='["http://localhost:5173","https://dein-projekt.vercel.app"]'
 
     model_config = {"env_file": ".env", "env_file_encoding": "utf-8"}
 
