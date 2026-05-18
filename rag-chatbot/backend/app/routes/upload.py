@@ -1,9 +1,12 @@
 # backend/app/routes/upload.py
+import logging
 from fastapi import APIRouter, UploadFile, File, HTTPException
 from pydantic import BaseModel
 
 from app.services.pdf_parser import extract_chunks
 from app.services.pinecone_db import store_chunks
+
+logger = logging.getLogger(__name__)
 
 router = APIRouter()
 
@@ -29,7 +32,11 @@ async def upload_pdf(file: UploadFile = File(...)):
     except ValueError as e:
         raise HTTPException(status_code=422, detail=str(e))
 
-    count = store_chunks(chunks)
+    try:
+        count = store_chunks(chunks)
+    except Exception as e:
+        logger.exception("Fehler beim Speichern der Chunks")
+        raise HTTPException(status_code=500, detail=f"Embedding/Speicher-Fehler: {e}")
 
     return UploadResponse(
         filename=file.filename,
